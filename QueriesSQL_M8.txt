@@ -13,7 +13,7 @@ FROM flights LEFT JOIN usairports ON usairports.IATA = flights.Origin
 GROUP BY City, colYear, colMonth ORDER BY City, colYear, colMonth;
 5-----
 SELECT UniqueCarrier, colYear, colMonth, SUM(Cancelled) AS "total_cancelled"
-FROM flights GROUP BY UniqueCarrier, colYear, colMonth ORDER BY total_cancelled DESC;
+FROM flights  GROUP BY UniqueCarrier, colYear, colMonth HAVING total_cancelled > 0 ORDER BY total_cancelled DESC;
 6-----
 SELECT TailNum, SUM(Distance) as "totalDistance"
 FROM flights WHERE TailNum !="" and TailNum !="#¿NOMBRE?" GROUP BY TailNum ORDER BY totalDistance DESC LIMIT 10;
